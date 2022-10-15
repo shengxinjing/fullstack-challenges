@@ -36,11 +36,10 @@ hero:
 
 
 
-[https://github.com/webfansplz/vuejs-challenges](https://github.com/webfansplz/vuejs-challenges)
 
 
 
-[https://github.com/goncy/interview-challenges](https://github.com/goncy/interview-challenges)
+<!-- [https://github.com/goncy/interview-challenges](https://github.com/goncy/interview-challenges)
 
 
 
@@ -49,15 +48,13 @@ hero:
 [https://github.com/alexgurr/react-coding-challenges](https://github.com/alexgurr/react-coding-challenges)
 
 [https://github.com/felipefialho/frontend-challenges](https://github.com/felipefialho/frontend-challenges)
+ -->
 
 
 
 
 
-[https://github.com/type-challenges/type-challenges](https://github.com/type-challenges/type-challenges)
 
 
 
-[https://bigfrontend.dev/design](https://bigfrontend.dev/design)
-
-[https://github.com/pinglu85/BFEdevSolutions](https://github.com/pinglu85/BFEdevSolutions)
+<!-- [https://github.com/pinglu85/BFEdevSolutions](https://github.com/pinglu85/BFEdevSolutions) -->
