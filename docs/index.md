@@ -2,13 +2,13 @@
 layout: home
 sidebar: false
 
-title: 前端挑战
+title: 前端刷题
 titleTemplate: 前端常见挑战题
 
 hero:
-  name: 前端挑战
+  name: 前端刷题
   text: 前端常见挑战题
-  tagline: A Vue.js online challenge platform
+  tagline: 前端常见题目参考答案
   image:
     src: https://cdn.jsdelivr.net/gh/shengxinjing/static/commit.svg
     alt: challenges
