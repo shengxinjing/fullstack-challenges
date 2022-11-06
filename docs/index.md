@@ -12,26 +12,35 @@ hero:
   image:
     src: https://cdn.jsdelivr.net/gh/shengxinjing/static/commit.svg
     alt: challenges
-#   actions:
-#     - theme: brand
-#       text: Get Started
-#       link: /getting-started
-#     - theme: alt
-#       text: Challenges
-#       link: /challenges
-#     - theme: alt
-#       text: View on Github
-#       link: https://github.com/webfansplz/vuejs-challenges
+  actions:
+    - theme: brand
+      text: 使用说明
+      link: /desc
+    - theme: alt
+      text: JS
+      link: /js
+    - theme: alt
+      text: TS
+      link: /ts
+    - theme: alt
+      text: Vue
+      link: /vue
+    - theme: alt
+      text: React
+      link: /react
+    - theme: alt
+      text: Node
+      link: /node
 
-# features:
-#   - title: Online Play
-#     details: Take the challenges based on the online Vue.js SFC Playground
-#   - title: Wide Coverage
-#     details: Reactivity API,Composable Function,Directives,Components
-#   - title: Difficulty level
-#     details: You can choose the challenge from different levels of difficulty
-#   - title: Automated contribution
-#     details: Propose a new challenge in the issue, a PR will be auto generated
+features:
+  - title: 选题丰富
+    details: 来源社区热门面试题 & 挑战项目，Javascript, Typescript, Vue, React, Node.js, 系统设计题
+  - title: 在线体验
+    details: 基于stackblitz, leetcode, codesandbox等在线编码环境
+  - title: 配套视频讲解
+    details: 逐行代码演示+讲解，手把手助你进阶前端
+  - title: 社区共建
+    details: 欢迎大家贡献面试中遇到的题目，寻求最优解
 ---
 
 
