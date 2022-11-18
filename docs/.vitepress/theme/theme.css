@@ -1,0 +1,11 @@
+.iframe,iframe{
+  width:1000px;
+  height:666px;
+
+}
+.VPDoc.has-aside .content-container{
+  max-width:1000px !important;
+}
+.aside{
+  display:none !important;
+}

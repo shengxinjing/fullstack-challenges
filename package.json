@@ -9,9 +9,10 @@
     "serve": "vitepress serve docs"
   },
   "dependencies": {
-		"vitepress": "1.0.0-alpha.20",
-		"vue": "^3.2.41"
-	},
+    "dplayer": "^1.27.0",
+    "vitepress": "1.0.0-alpha.20",
+    "vue": "^3.2.41"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"

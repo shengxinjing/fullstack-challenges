@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #app{
+      width:800px;
+      margin:0 auto;
+      text-align: center;
+    }
+    #board{
+      display: none;
+    }
+    button{
+      background: #fb7299;
+      color:white;
+      border:none;
+      width:100px;
+      height:50px;
+      border-radius:20px;
+      font-size:20px;
+      margin:20px;
+    }
+    .keys{
+      border-radius: 20px;
+      display: inline-block;
+      width:50px;
+      height:50px;
+      margin:5px;
+      background: #eee;
+      text-align: center;
+      font-size: 20px;
+      line-height: 50px;
+      cursor: pointer;
+      user-select:none
+    }
+    .keys.active{
+      background: #fb7299;
+      color:white;
+    }
+    .keys.a{
+      margin-left:20px;
+    }
+    .keys.z{
+      margin-left:40px;
+    }
+    #output{
+      padding:10px;
+      border:none;
+      outline: none;
+      width:600px;
+      height:100px;
+      background: #eee;
+    }
+    .about{
+          width:800px;
+          margin:0 auto;
+          padding-top:10px;
+          display: flex;
+          align-items : center;
+            
+    }
+    .about .item{
+        color:white;
+        flex:1;
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="about">
+    <div class="item">
+      <a target="_blank" href="https://twitter.com/shengxj1">
+          <img style="height:35px;" src="https://cdn.jsdelivr.net/gh/shengxinjing/static/twitter.svg" alt="">
+      </a>
+    </div>
+    <div class="item">
+        <a target="_blank" href="https://space.bilibili.com/26995758">
+            <img style="height:35px;" src="https://pandafe.gitee.io/clock/img/bili.svg" alt="">
+        </a>
+    </div>
+    <div class="item">
+        <a target="_blank" href="https://www.zhihu.com/people/woniuppp">
+            <img src="https://pandafe.gitee.io/clock/img/zhihu.svg" alt="">
+        </a>
+    </div>
+    <div class="item">
+        <a target="_blank" href="https://github.com/shengxinjing">
+            <img style="height:35px;" src="https://cdn.jsdelivr.net/gh/shengxinjing/static/github.svg" alt="">
+        </a>
+    </div>
+    <div class="item" id="hug-sun">
+        <a target="_blank" href="https://space.bilibili.com/26995758">
+            <img  src="https://pandafe.gitee.io/clock/img/hugsun.bmp" alt="">
+        </a>
+    </div>
+
+</div>
+  <div id="app">
+    <h1>KunBoard</h1>
+    <div>
+      <button id="play">开始</button>
+
+    </div>
+    <div id="board">
+      <button id="replay">播放</button>
+      <div>
+        <textarea id="output" name="" id="" cols="72" rows="10"></textarea>
+      </div>
+    </div>
+    <div id="keyboard"></div>
+  </div>
+<!-- <audio controls src="ikun/ikun.mp3" autoplay></audio> -->
+
+<script>
+const $ = (selector)=>document.querySelector(selector)
+const textarea = $('#output')
+const replayBtn = $('#replay')
+let btns = ['qwertyuiop','asdfghjkl','zxcvbnm']
+function renderBtn(){
+  let btnHtml = ''
+  btns.forEach(btn=>{
+    btnHtml+='<div>'
+    btn.split('').forEach(s=>{
+      btnHtml+=`<div class="keys ${s}">${s}</div>`
+    })
+    btnHtml+='</div>'
+  })
+  $('#keyboard').innerHTML = btnHtml
+}
+
+replayBtn.addEventListener('click',async (e)=>{
+  let val = textarea.value.toLowerCase()
+  if(!val) return
+  let tasks = val.split('') || []
+  play()
+  function play(){
+    if(tasks.length){
+      let key = tasks.shift()
+      if(audio.maps[key]){
+        audio.play(key)
+        setTimeout(play,audio.maps[key][1]*1000)
+      }
+    }
+  }
+  console.log(textarea.value)
+},false)
+document.addEventListener('click',function(e){
+  if(e.target.className.indexOf('keys')>-1){
+    const key = e.target.className.replace('keys ','').trim()
+    textarea.value+=key
+    audio.play(key)
+    blink(e.target)
+  }
+},false)
+document.addEventListener('keydown',(e)=>{
+  const {key} = e
+  if(e.shiftKey || e.ctrlKey || e.metaKey || e.altKey)return 
+  if(key.length!==1 || !/[a-z]/g.test(key)) return w
+  if(e.target.tagName==='TEXTAREA'){
+
+  }else{
+    textarea.value+=key
+  }
+  audio.play(key)
+  blink($('.keys.'+key))
+})
+
+function blink(el){
+  if(!el){
+    return 
+  }
+  const name = ' active'
+  if(el.className.indexOf(name)===-1){
+    el.className += name
+  }
+  setTimeout(()=>{
+    el.className = el.className.replace(name,'')
+  },100)
+}
+
+class KunAudio{
+  constructor(src){
+    this.src = src
+    this.isLoaded = false
+    this.audioBuffer = null
+    this.maps = {
+      g:[1,2],
+      a:[2.5,2],
+      h:[5.7,2],
+      z:[17,1],
+      w:[19.5,1.5],
+      e:[21,2],
+      r:[23,2],
+      y:[38,0.8],
+      s:[44,0.8],
+      b:[51.5,1],
+      j:[34,0.4],
+      n:[34.4,0.3],
+      t:[34.7,0.3],
+      m:[35,0.5],
+      q:[36,1]
+    }
+  }
+  
+  play(key){
+    if(this.maps[key] && this.context){
+      let source = this.context.createBufferSource();
+        source.buffer = this.audioBuffer
+        source.loop = true
+        source.connect(this.context.destination);
+        source.start(0,...this.maps[key])
+    }
+  }
+  
+  initSound(arrayBuffer){
+    this.context.decodeAudioData(arrayBuffer, (buffer)=>{ 
+        this.audioBuffer = buffer
+    }, function(e) { 
+        console.log('Error decoding file', e);
+    });
+  }
+  load(src){
+    return new Promise(resolve=>{
+      var xhr = new XMLHttpRequest(); //下载音频文件
+      xhr.open('GET', src, true);
+      xhr.responseType = 'arraybuffer';
+      xhr.onload = function(e) { 
+        resolve(this.response)
+      }
+      xhr.send();
+    })
+  }
+  async start(){
+    if(this.isLoaded) return 
+    const res = await this.load(this.src)
+    const AudioContext = window.AudioContext 
+                          || window.webkitAudioContext 
+                          || window.mozAudioContext 
+                          || window.msAudioContext
+    this.context = new AudioContext()
+    this.initSound(res)
+    this.isLoaded = true
+  }
+}
+const audio = new KunAudio('./ikun/ikun.mp3')
+$('#play').addEventListener('click',()=>{
+  audio.start()
+  renderBtn()
+  $('#board').style.display = 'block'
+  $('#play').style.display = 'none'
+
+},false)
+</script>
+</body>
+</html>
