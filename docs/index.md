@@ -8,7 +8,7 @@ titleTemplate: 前端常见挑战题
 hero:
   name: 前端刷题
   text: 前端常见挑战题
-  tagline: 前端常见题目参考答案
+  tagline: 前端常见题目参考答案(持续)
   image:
     src: https://cdn.jsdelivr.net/gh/shengxinjing/static/commit.svg
     alt: challenges
