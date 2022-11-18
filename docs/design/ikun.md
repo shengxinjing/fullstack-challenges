@@ -1,9 +1,7 @@
 <script setup>
-import IKun from './ikun.vue'
 
 </script>
 
-<IKun />
 ```javascript
 
 const ikuns = []
